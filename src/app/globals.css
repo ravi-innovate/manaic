@@ -3,19 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
+    --main-text: #7b00d5;
+    --primary-text: #000000;
+    --secondary-text: #4a4a4a;
+    --muted-text: #9e9e9e;
+    --link-text: #1e88e5;
+    --error-text: #d32f2f;
+    --success-text: #388e3c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
+[data-theme="dark"] {
+    --background: #0a000d;
     --foreground: #ededed;
-  }
+    --main-text: #9a00fa;
+    --primary-text: #ffffff;
+    --secondary-text: #a3a3a3;
+    --muted-text: #757575;
+    --link-text: #42a5f5;
+    --error-text: #ef5350;
+    --success-text: #66bb6a;
+}
+
+[data-theme="light"] {
+    --background: #ffffff;
+    --foreground: #171717;
+    --main-text: #7b00d5;
+    --primary-text: #000000;
+    --secondary-text: #4a4a4a;
+    --muted-text: #9e9e9e;
+    --link-text: #1e88e5;
+    --error-text: #d32f2f;
+    --success-text: #388e3c;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Raleway, Montserrat, Oswald, Helvetica, sans-serif;
+    /* letter-spacing: 0.05rem; */
 }
+
+.main-text {
+    color: var(--main-text);
+    font-family:Geneva, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva;
+}
+
+.primary-text {
+    color: var(--primary-text);
+}
+.secondary-text {
+    color: var(--secondary-text);
+}
+
+.coming-soon{
+  border: 2px solid var(--main-text);
+  background: #7b00d520;
+}
+
