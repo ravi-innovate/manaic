@@ -6,7 +6,7 @@ const Hero = () => {
         <>
             <Navbar />
             <div className="container w-8/9 flex items-center justify-between mt-1">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-center md:text-left">
                     <h1 className="text-5xl font-bold md:text-6xl">
                         Discover What Matters
                     </h1>
@@ -21,7 +21,7 @@ const Hero = () => {
                         informed!
                     </p>
                 </div>
-                <div>
+                <div className="hidden md:block">
                     <Image
                         src={"/images/home-hero.png"}
                         className="me-20"
@@ -30,9 +30,6 @@ const Hero = () => {
                         alt="hero_home_image_missing-network-error"
                     />
                 </div>
-            </div>
-            <div className="container w-8/9 flex items-center justify-between ">
-                <p className="text-6xl p-10 my-20 mx-auto font-bold coming-soon rounded-3xl"> We Will Comming Soon </p>
             </div>
         </>
     );

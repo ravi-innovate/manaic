@@ -16,6 +16,8 @@
 
 [data-theme="dark"] {
     --background: #0a000d;
+    --background-1: #1d1321;
+    --background-2: #110b17;
     --foreground: #ededed;
     --main-text: #9a00fa;
     --primary-text: #ffffff;
@@ -28,6 +30,8 @@
 
 [data-theme="light"] {
     --background: #ffffff;
+    --background-1: #ffffff;
+    --background-2: #eeeeef;
     --foreground: #171717;
     --main-text: #7b00d5;
     --primary-text: #000000;
@@ -42,7 +46,10 @@ body {
     color: var(--foreground);
     background: var(--background);
     font-family: Raleway, Montserrat, Oswald, Helvetica, sans-serif;
-    /* letter-spacing: 0.05rem; */
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .main-text {
@@ -57,8 +64,10 @@ body {
     color: var(--secondary-text);
 }
 
-.coming-soon{
-  border: 2px solid var(--main-text);
-  background: #7b00d520;
+.bg-l1{
+  background: var(--background-1);
 }
 
+.topic-card{
+    background-color:var(--background-2) ;
+}

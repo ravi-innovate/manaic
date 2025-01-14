@@ -34,9 +34,9 @@ const Navbar: React.FC = () => {
         <div className="container w-8/9 py-3 flex items-center justify-between">
             <Image
                 src={"/images/logo.png"}
-                className="me-20 rounded-full"
-                height={40}
-                width={200}
+                className="me-20"
+                height={35}
+                width={190}
                 alt="hero_home_image_missing-network-error"
                 style={{ filter: `invert(${darkMode ? 1 : 0})` }}
             />
