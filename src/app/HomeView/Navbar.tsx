@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
     const toggleTheme = (): void => {
         const root = document.documentElement;
         const isDarkMode = root.getAttribute("data-theme") === "dark";
-        setDarkMode(isDarkMode);
+        setDarkMode(!isDarkMode);
         if (isDarkMode) {
             root.setAttribute("data-theme", "light");
         } else {
@@ -38,13 +38,13 @@ const Navbar: React.FC = () => {
                 height={35}
                 width={190}
                 alt="hero_home_image_missing-network-error"
-                style={{ filter: `invert(${darkMode ? 1 : 0})` }}
+                style={{ filter: `invert(${darkMode ? 0 : 1})` }}
             />
             <button
                 onClick={toggleTheme}
                 className="bg-gray-200 dark:bg-gray-700 p-2 rounded-full shadow-md transition-transform hover:scale-105"
             >
-                {darkMode ? (
+                {!darkMode ? (
                     <span className="text-yellow-400" aria-label="Dark Mode">
                         🌙
                     </span>

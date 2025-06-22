@@ -71,3 +71,11 @@ body {
 .topic-card{
     background-color:var(--background-2) ;
 }
+
+.blog-content {
+  font-family: 'calibri', 'Montserrat', 'Lato', 'Merriweather';
+  line-height: 1.75rem;
+  word-break: break-word;
+  letter-spacing: 0.01em;
+  text-align: left;
+}

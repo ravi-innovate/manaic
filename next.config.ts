@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
         extend: {},
     },
     plugins: [],
+    "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    }
+  }
 };
 
 export default nextConfig;

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 
 const Hero = () => {
     return (
         <>
-            <Navbar />
+            
             <div className="container w-8/9 flex items-center justify-between mt-1">
                 <div className="flex flex-col gap-3 text-center md:text-left">
                     <h1 className="text-5xl font-bold md:text-6xl">

@@ -1,6 +1,9 @@
 import Image from "next/image";
-
-const Categories = () => {
+import { getAllPosts } from '@/app/api/apiMethod'
+import Link from "next/link";
+const Categories = async () => {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
+    const posts = await getAllPosts();
     return (
         <div className="container w-8/9 mt-16">
             <div
@@ -22,104 +25,38 @@ const Categories = () => {
 
                 <section className="mt-5">
                     <div className="container flex flex-wrap gap-4 justify-around">
-                        <div
+                        {posts && posts.map((value, index) =>
+                        (<div
+                            key={index}
                             className="topic-card flex flex-col justify-between items-center p-3 bg-background rounded-lg"
-                            style={{ borderRadius: "17px", width:"400px" }}
+                            style={{ borderRadius: "17px", width: "400px" }}
                         >
-                            <Image
-                                src="/images/blog/CaliforniaFire.webp"
+                            {value.cover_image && <img
+                                src={`${process.env.NEXT_PUBLIC_SUPABASE_IMAGE_URL}${value.cover_image}`}
                                 height={200}
                                 width={400}
                                 alt="fire image"
                                 className="rounded-lg w-full"
                                 style={{ borderRadius: "15px" }}
-                            />
+                            />}
                             <h3 className="text-xl font-bold md:text-xl main-text my-3">
-                                Inferno in LA: The Wildfires That Redefined
-                                Devastation in 2025
+                                {value.title}
                             </h3>
 
                             <h4 className="secondary-text break-normal">
-                                Los Angeles faces an unprecedented crisis as
-                                wildfires destroy lives, homes, and history,
-                                with damages soaring to $150 billion. The iconic
-                                Hollywood Sign now stands as a witness to the
-                                flames.
+                                {value.excerpt}
                             </h4>
+                            <Link href={`${baseUrl}blog/${value.slug}`}>
+                                <button
+                                    className="mt-4 px-6 py-2 text-sm text-white font-semibold rounded-full"
+                                    style={{ backgroundColor: 'var(--main-text)' }}
+                                >
+                                    Read More
+                                </button>
+                            </Link>
+                        </div>)
+                        )}
 
-                            <button
-                                className="mt-4 px-6 py-2 text-sm text-white font-semibold text-background bg-main-text rounded-full "
-                                style={{ backgroundColor: "var(--main-text)" }}
-                            >
-                                Read More
-                            </button>
-                        </div>
-
-                        <div
-                            className="topic-card flex flex-col justify-between items-center p-3 bg-background rounded-lg"
-                            style={{ borderRadius: "17px", width:"400px" }}
-                        >
-                            <Image
-                                src="/images/blog/CaliforniaFire.webp"
-                                height={200}
-                                width={400}
-                                alt="fire image"
-                                className="rounded-lg w-full"
-                                style={{ borderRadius: "15px" }}
-                            />
-                            <h3 className="text-xl font-bold md:text-xl main-text my-3">
-                                Inferno in LA: The Wildfires That Redefined
-                                Devastation in 2025
-                            </h3>
-
-                            <h4 className="secondary-text break-normal">
-                                Los Angeles faces an unprecedented crisis as
-                                wildfires destroy lives, homes, and history,
-                                with damages soaring to $150 billion. The iconic
-                                Hollywood Sign now stands as a witness to the
-                                flames.
-                            </h4>
-
-                            <button
-                                className="mt-4 px-6 py-2 text-sm text-white font-semibold text-background bg-main-text rounded-full "
-                                style={{ backgroundColor: "var(--main-text)" }}
-                            >
-                                Read More
-                            </button>
-                        </div>
-
-                        <div
-                            className="topic-card flex flex-col justify-between items-center p-3 bg-background rounded-lg"
-                            style={{ borderRadius: "17px", width:"400px" }}
-                        >
-                            <Image
-                                src="/images/blog/CaliforniaFire.webp"
-                                height={200}
-                                width={400}
-                                alt="fire image"
-                                className="rounded-lg w-full"
-                                style={{ borderRadius: "15px" }}
-                            />
-                            <h3 className="text-xl font-bold md:text-xl main-text my-3">
-                                Inferno in LA: The Wildfires That Redefined
-                                Devastation in 2025
-                            </h3>
-
-                            <h4 className="secondary-text break-normal">
-                                Los Angeles faces an unprecedented crisis as
-                                wildfires destroy lives, homes, and history,
-                                with damages soaring to $150 billion. The iconic
-                                Hollywood Sign now stands as a witness to the
-                                flames.
-                            </h4>
-
-                            <button
-                                className="mt-4 px-6 py-2 text-sm text-white font-semibold text-background bg-main-text rounded-full "
-                                style={{ backgroundColor: "var(--main-text)" }}
-                            >
-                                Read More
-                            </button>
-                        </div>
                     </div>
                 </section>
             </div>
