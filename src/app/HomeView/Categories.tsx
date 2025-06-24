@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { getAllPosts } from '@/app/api/apiMethod'
-import Link from "next/link";
+import React from 'react';
+import BlogCard from '../blog/components/BlogCard';
 const Categories = async () => {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
     const posts = await getAllPosts();
     return (
         <div className="container w-8/9 mt-16">
@@ -24,37 +23,11 @@ const Categories = async () => {
                 </div>
 
                 <section className="mt-5">
-                    <div className="container flex flex-wrap gap-4 justify-around">
-                        {posts && posts.map((value, index) =>
-                        (<div
-                            key={index}
-                            className="topic-card flex flex-col justify-between items-center p-3 bg-background rounded-lg"
-                            style={{ borderRadius: "17px", width: "400px" }}
-                        >
-                            {value.cover_image && <img
-                                src={`${process.env.NEXT_PUBLIC_SUPABASE_IMAGE_URL}${value.cover_image}`}
-                                height={200}
-                                width={400}
-                                alt="fire image"
-                                className="rounded-lg w-full"
-                                style={{ borderRadius: "15px" }}
-                            />}
-                            <h3 className="text-xl font-bold md:text-xl main-text my-3">
-                                {value.title}
-                            </h3>
-
-                            <h4 className="secondary-text break-normal">
-                                {value.excerpt}
-                            </h4>
-                            <Link href={`${baseUrl}blog/${value.slug}`}>
-                                <button
-                                    className="mt-4 px-6 py-2 text-sm text-white font-semibold rounded-full"
-                                    style={{ backgroundColor: 'var(--main-text)' }}
-                                >
-                                    Read More
-                                </button>
-                            </Link>
-                        </div>)
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {posts && posts.map((blog) =>
+                        (<React.Fragment key={blog.id}>
+                            <BlogCard blog={blog} />
+                        </React.Fragment>)
                         )}
 
                     </div>

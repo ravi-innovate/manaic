@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 // import Navbar from "./Navbar";
 
 const Hero = () => {
     return (
         <>
-            
+
             <div className="container w-8/9 flex items-center justify-between mt-1">
                 <div className="flex flex-col gap-3 text-center md:text-left">
                     <h1 className="text-5xl font-bold md:text-6xl">
@@ -20,6 +21,10 @@ const Hero = () => {
                         inspiration that can help you learn, grow, and stay
                         informed!
                     </p>
+                    <Link href={`${process.env.NEXT_PUBLIC_APP_URL}blogs`}>
+                        <button className="mt-4 px-4 py-2 text-sm text-white font-medium bg-main-text rounded-full"
+                            style={{ backgroundColor: "var(--main-text)" }}>Explore Blogs</button>
+                    </Link>
                 </div>
                 <div className="hidden md:block">
                     <Image

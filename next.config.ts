@@ -1,18 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    darkMode: "class",
-    content: ["./src/**/*.{js,jsx,ts,tsx}"],
-    theme: {
-        extend: {},
-    },
-    plugins: [],
-    "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"]
-    }
-  }
+  reactStrictMode: true,
+  experimental: {
+    serverActions: {},
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/blogs",
+        destination: "/blog",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

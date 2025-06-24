@@ -42,11 +42,19 @@ export async function getPostBySlug(slug: string) {
 export async function getBlogsPaginated(page: number = 1, perPage: number = 6) {
   const offset = (page - 1) * perPage
 
-  const { data, error } = await supabase
+  const { data, count, error } = await supabase
     .from("posts")
-    .select("*")
+    .select("*", { count: 'exact' })
     .order("created_at", { ascending: false })
     .range(offset, offset + perPage - 1)
 
-  return data ?? []
+  if (error) {
+    console.error('Error fetching paginated posts:', error.message)
+    return { blogs: [], totalCount: 0 }
+  }
+
+  return {
+    blogs: data ?? [],
+    totalCount: count ?? 0,
+  }
 }

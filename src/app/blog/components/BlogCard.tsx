@@ -1,14 +1,17 @@
 // components/BlogCard.tsx
 import Link from "next/link"
+import { Blog } from "@/type/schema"
+import ImageSubstitute from "./ImageSubstitute"
 
-export default function BlogCard({ blog }: { blog: any }) {
+export default function BlogCard({ blog }: { blog: Blog }) {
   return (
-    <div className="topic-card rounded-xl p-4 shadow-md transition">
-      <img
-        src={`${process.env.NEXT_PUBLIC_SUPABASE_IMAGE_URL}${blog.cover_image}`}
-        alt={blog.title}
-        className="w-full h-auto rounded-lg mb-4"
-      />
+    <div className="topic-card rounded-xl p-4 shadow-md hover:shadow-xl transition">
+      {blog.cover_image ?
+        <img
+          src={`${process.env.NEXT_PUBLIC_SUPABASE_IMAGE_URL}${blog.cover_image}`}
+          alt={blog.title}
+          className="w-full h-auto rounded-lg mb-4"
+        /> : <ImageSubstitute text={blog.title} />}
       <h2 className="text-xl font-semibold main-text">{blog.title}</h2>
       <p className="text-sm text-muted-text mt-1">
         {new Date(blog.created_at).toLocaleDateString("en-GB", {
