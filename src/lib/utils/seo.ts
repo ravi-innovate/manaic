@@ -8,7 +8,7 @@ export function generateBreadcrumbList(pathSegments: string[], siteUrl: string) 
     name: segment === ''
       ? 'Home'
       : decodeURIComponent(segment).replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
-    item: `${siteUrl}${pathSegments.slice(0, index + 1).join('/')}`,
+    item: `${siteUrl.replace(/\/$/, '')}/${pathSegments.slice(0, index + 1).join('/').replace(/^\/+/, '')}`
   }))
 
   return {

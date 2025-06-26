@@ -1,6 +1,5 @@
 // File: src/app/blog/page.tsx
 import { getBlogsPaginated } from '@/app/api/apiMethod'
-import { Metadata } from 'next'
 import BlogCard from './components/BlogCard'
 import Pagination from './components/Pagination'
 import React from 'react'
@@ -8,14 +7,15 @@ import { generateBlogItemListLD, generateBlogListingBreadcrumb, generateBlogList
 import Script from 'next/script'
 
 const postsPerPage = 6
-export async function generateMetadata({ searchParams }: {
-  searchParams: Promise<{ page: string }>
-}) {
-  const { page } = await searchParams;
-  const currentPage = parseInt(page || '1')
-  const { blogs } = await getBlogsPaginated(currentPage, postsPerPage)
+export async function generateMetadata() {
+  // { searchParams }: {
+  //   searchParams: Promise<{ page: string }>
+  // }
+  // const { page } = await searchParams;
+  // const currentPage = parseInt(page || '1')
+  // const { blogs } = await getBlogsPaginated(currentPage, postsPerPage)
 
-  return generateBlogListPageMetadata(blogs)
+  return generateBlogListPageMetadata()
 }
 
 export default async function BlogPage({ searchParams }: {

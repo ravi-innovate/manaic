@@ -38,10 +38,10 @@ export function generateBlogItemListLD(
   }
 }
 
-export function generateBlogListPageMetadata(posts: { slug: string; title: string; excerpt?: string }[]): Metadata {
+export function generateBlogListPageMetadata(): Metadata {
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL!
-  const title = "All Blog Posts"
-  const description = "Explore the latest insights, tips, and updates from our blog. Stay informed and inspired."
+  const title = "Latest Blog Posts – Smart Ideas, Daily Motivation & Growth"
+  const description = "Explore fresh perspectives, simple tips, and inspiring reads on health, mindset, productivity, and life skills. A blog made for curious minds and everyday learners in India."
 
   return {
     title,
