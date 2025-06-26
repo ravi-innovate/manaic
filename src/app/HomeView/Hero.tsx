@@ -7,7 +7,8 @@ const Hero = () => {
         <>
 
             <div className="container w-8/9 flex items-center justify-between mt-1">
-                <div className="flex flex-col gap-3 text-center md:text-left">
+                <div className="flex flex-col gap-5 text-center md:text-left">
+                    <span className="mt-4 py-2 secondary-text break-normal rounded-full">We didn’t misspell it. We redefined it. 🧠⚡</span>
                     <h1 className="text-5xl font-bold md:text-6xl">
                         Discover What Matters
                     </h1>
@@ -28,10 +29,10 @@ const Hero = () => {
                 </div>
                 <div className="hidden md:block">
                     <Image
-                        src={"/images/home-hero.png"}
+                        src={"/images/home-hero-new.png"}
                         className="me-20"
-                        height={700}
-                        width={500}
+                        height={650}
+                        width={300}
                         alt="hero_home_image_missing-network-error"
                     />
                 </div>

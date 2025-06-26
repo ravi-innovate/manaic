@@ -21,7 +21,7 @@ export default async function BlogPage({ params }: {
 
     if (!post) return notFound()
     const siteUrl = process.env.NEXT_PUBLIC_APP_URL!;
-    const breadcrumbJson = generateBreadcrumbList(['home', blogSlug], siteUrl);
+    const breadcrumbJson = generateBreadcrumbList(['','blogs', blogSlug], siteUrl);
     const blogJson = generateBlogJsonLD({
         siteUrl,
         slug: post.slug,
@@ -43,7 +43,7 @@ export default async function BlogPage({ params }: {
                 <h1 className="text-4xl font-bold md:text-5xl mb-2">{post.title}</h1>
 
                 {/* Meta */}
-                <p className="mb-6 text-base md:text-lg secondary-text">
+                <p className="mb-6 text-sm md:text-base muted-text">
                     Published on {new Date(post.created_at).toLocaleDateString("en-GB", {
                         day: "numeric",
                         month: "long",
@@ -63,7 +63,7 @@ export default async function BlogPage({ params }: {
 
                 {/* Content */}
                 <div
-                    className="text-xl md:text-2xl primary-text blog-content"
+                    className="text-base md:text-lg secondary-text blog-content"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
@@ -73,7 +73,7 @@ export default async function BlogPage({ params }: {
                         {post.tags.map((tag: string) => (
                             <span
                                 key={tag}
-                                className="px-3 py-1 text-base md:text-lg secondary-text"
+                                className="pr-3 py-1 text-sm md:text-base muted-text"
                             >
                                 #{tag}
                             </span>

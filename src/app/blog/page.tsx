@@ -4,12 +4,18 @@ import { Metadata } from 'next'
 import BlogCard from './components/BlogCard'
 import Pagination from './components/Pagination'
 import React from 'react'
-export const metadata: Metadata = {
-  title: 'Explore Top Blog Posts | Maniac Blog',
-  description: 'Browse our latest blogs covering technology, lifestyle, fitness, and more. Stay informed and inspired.',
-  alternates: {
-    canonical: '/blog',
-  },
+import { generateBlogItemListLD, generateBlogListingBreadcrumb, generateBlogListPageMetadata } from '@/lib/utils/blogListSEO'
+import Script from 'next/script'
+
+const postsPerPage = 6
+export async function generateMetadata({ searchParams }: {
+  searchParams: Promise<{ page: string }>
+}) {
+  const { page } = await searchParams;
+  const currentPage = parseInt(page || '1')
+  const { blogs } = await getBlogsPaginated(currentPage, postsPerPage)
+
+  return generateBlogListPageMetadata(blogs)
 }
 
 export default async function BlogPage({ searchParams }: {
@@ -17,12 +23,23 @@ export default async function BlogPage({ searchParams }: {
 }) {
   const { page } = await searchParams;
   const currentPage = parseInt(page || '1')
-  const postsPerPage = 6
   const { blogs, totalCount } = await getBlogsPaginated(currentPage, postsPerPage)
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL!
 
+  const breadcrumbLD = generateBlogListingBreadcrumb(siteUrl)
+  const itemListLD = generateBlogItemListLD(blogs, siteUrl)
   const totalPages = Math.ceil(totalCount / postsPerPage)
 
-  return (
+  return (<> <Script
+    id="breadcrumb-jsonld"
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLD, null, 2).replace(/</g, '\\u003c') }}
+  />
+    <Script
+      id="itemlist-jsonld"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLD, null, 2).replace(/</g, '\\u003c') }}
+    />
     <main className="container w-8/9 mt-16">
       <h1 className="text-2xl font-bold md:text-4xl mb-2">Discover What Everyone’s Reading Right Now</h1>
       <h1 className="mb-6 text-base md:text-lg mb-6 secondary-text">Fresh, addictive, and handpicked blog posts — from smart hacks to bold ideas, start your scroll-worthy journey here.</h1>
@@ -37,6 +54,6 @@ export default async function BlogPage({ searchParams }: {
       {/* Pagination */}
       {totalPages > 1 &&
         <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`${process.env.NEXT_PUBLIC_APP_URL}blog`} />}
-    </main>
+    </main></>
   )
 }

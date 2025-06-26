@@ -35,8 +35,8 @@ const Navbar: React.FC = () => {
             <Image
                 src={"/images/logo.png"}
                 className="me-20"
-                height={35}
-                width={190}
+                height={55}
+                width={140}
                 alt="hero_home_image_missing-network-error"
                 style={{ filter: `invert(${darkMode ? 0 : 1})` }}
             />

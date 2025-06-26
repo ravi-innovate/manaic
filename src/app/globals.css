@@ -18,7 +18,7 @@
     --background: #0a000d;
     --background-1: #1d1321;
     --background-2: #110b17;
-    --foreground: #ededed;
+    --foreground: #e1e1e1;
     --main-text: #9a00fa;
     --primary-text: #ffffff;
     --secondary-text: #a3a3a3;
@@ -63,6 +63,9 @@ body {
 .secondary-text {
     color: var(--secondary-text);
 }
+.muted-text {
+    color: var(--muted-text);
+}
 
 .bg-l1{
   background: var(--background-1);
@@ -73,7 +76,7 @@ body {
 }
 
 .blog-content {
-  font-family: 'calibri', 'Montserrat', 'Lato', 'Merriweather';
+  /* font-family: 'calibri', 'Montserrat', 'Lato', 'Merriweather'; */
   line-height: 1.75rem;
   word-break: break-word;
   letter-spacing: 0.01em;
