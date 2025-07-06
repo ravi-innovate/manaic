@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./HomeView/Navbar";
+import { gtmNoScript, gtmScript } from '@/lib/utils/Gtag'
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -25,9 +26,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>        
+                <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
+            </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
+                <noscript dangerouslySetInnerHTML={{ __html: gtmNoScript }} />
                 <Navbar />
                 {children}
             </body>

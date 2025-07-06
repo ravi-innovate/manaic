@@ -5,6 +5,7 @@ import {
     generateBlogJsonLD,
     generatePageMetadataFromSlug
 } from '@/lib/utils/seo'
+import Footer from '@/app/HomeView/Footer';
 
 export async function generateMetadata({ params }: {
     params: Promise<{ blogSlug: string }>
@@ -21,7 +22,7 @@ export default async function BlogPage({ params }: {
 
     if (!post) return notFound()
     const siteUrl = process.env.NEXT_PUBLIC_APP_URL!;
-    const breadcrumbJson = generateBreadcrumbList(['','blogs', blogSlug], siteUrl);
+    const breadcrumbJson = generateBreadcrumbList(['', 'blogs', blogSlug], siteUrl);
     const blogJson = generateBlogJsonLD({
         siteUrl,
         slug: post.slug,
@@ -81,6 +82,8 @@ export default async function BlogPage({ params }: {
                     </div>
                 )}
             </article>
-        </main></>
+        </main>
+        <Footer />
+    </>
     )
 }

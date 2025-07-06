@@ -49,7 +49,7 @@ export async function getBlogsPaginated(page: number = 1, perPage: number = 6) {
     .range(offset, offset + perPage - 1)
 
   if (error) {
-    console.error('Error fetching paginated posts:', error.message)
+    console.log('Error fetching paginated posts:', error.message)
     return { blogs: [], totalCount: 0 }
   }
 

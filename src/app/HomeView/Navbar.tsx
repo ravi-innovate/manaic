@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const Navbar: React.FC = () => {
@@ -32,14 +33,16 @@ const Navbar: React.FC = () => {
 
     return (
         <div className="container w-8/9 py-3 flex items-center justify-between">
-            <Image
-                src={"/images/logo.png"}
-                className="me-20"
-                height={55}
-                width={140}
-                alt="hero_home_image_missing-network-error"
-                style={{ filter: `invert(${darkMode ? 0 : 1})` }}
-            />
+            <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`} >
+                <Image
+                    src={"/images/logo.png"}
+                    className="me-20"
+                    height={55}
+                    width={140}
+                    alt="hero_home_image_missing-network-error"
+                    style={{ filter: `invert(${darkMode ? 0 : 1})`, cursor:"pointer" }}
+                />
+            </Link>
             <button
                 onClick={toggleTheme}
                 className="bg-gray-200 dark:bg-gray-700 p-2 rounded-full shadow-md transition-transform hover:scale-105"
