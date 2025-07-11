@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
 
             {/* Mobile Dropdown Menu */}
             {isMobileMenuOpen && (
-                <div className="absolute top-full right-4 mt-[-0.75rem] w-48 bg-[--background-1] rounded-lg border border-gray-400 z-50 transition-all duration-300 animate-fade-in flex flex-col p-4 gap-3 text-xs md:hidden">
+                <div className="absolute top-full right-4 mt-[-0.75rem] w-48 bg-[--background-1] rounded-lg border z-50 transition-all duration-300 animate-fade-in flex flex-col p-4 gap-3 text-xs md:hidden" style={{borderColor:"gray"}}>
                     <Link
                         href={`${process.env.NEXT_PUBLIC_APP_URL}`}
                         onClick={() => setIsMobileMenuOpen(false)}
