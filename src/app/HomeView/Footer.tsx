@@ -6,16 +6,15 @@ const Footer = () => {
     return (
         <footer className="bg-[#000] text-white py-8 mt-16 pt-16">
             <div className="container mx-auto px-4">
-                <div className="flex justify-between">
+                <div className="flex flex-col md:flex-row justify-between gap-8">
                     <div>
-                        <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`} >
+                        <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`}>
                             <Image
                                 src={"/images/logo.png"}
-                                className=""
                                 height={35}
                                 width={190}
                                 alt="hero_home_image_missing-network-error"
-                                style={{ filter: `invert(0)`,cursor:"pointer"  }}
+                                style={{ filter: "invert(0)", cursor: "pointer" }}
                             />
                         </Link>
                         <p className="mt-5 text-sm opacity-70">
@@ -24,24 +23,31 @@ const Footer = () => {
                         </p>
                     </div>
 
+                    {/* Quick Links */}
                     <div>
                         <h3 className="text-lg font-semibold mb-3">
                             Quick Links
                         </h3>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`} style={{cursor:"pointer"}} >
+                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`}>
                                     Home
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}blogs`} style={{cursor:"pointer"}} >
+                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}blogs`}>
                                     Blogs
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}terms`}>
+                                    Terms
                                 </Link>
                             </li>
                         </ul>
                     </div>
 
+                    {/* Contact */}
                     <div>
                         <h3 className="text-lg font-semibold mb-3">
                             Contact Us
@@ -51,7 +57,7 @@ const Footer = () => {
                                 <Link
                                     href="mailto:devinpixel@gmail.com"
                                     className="hover:text-gray-400"
-                                    style={{cursor:"pointer"}}
+                                    style={{ cursor: "pointer" }}
                                 >
                                     devinpixel@gmail.com
                                 </Link>
@@ -59,6 +65,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
+                    {/* Social */}
                     <div>
                         <h3 className="text-lg font-semibold mb-3">
                             Follow Us
@@ -66,7 +73,7 @@ const Footer = () => {
                         <div className="flex space-x-4">
                             <Link
                                 href={`${process.env.NEXT_PUBLIC_INSTA_URL}`}
-                                style={{stroke:"white",fontSize:"25px"}}
+                                style={{ stroke: "white", fontSize: "25px" }}
                             >
                                 <FiInstagram />
                             </Link>

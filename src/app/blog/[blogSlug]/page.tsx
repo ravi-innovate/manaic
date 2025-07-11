@@ -5,7 +5,6 @@ import {
     generateBlogJsonLD,
     generatePageMetadataFromSlug
 } from '@/lib/utils/seo'
-import Footer from '@/app/HomeView/Footer';
 
 export async function generateMetadata({ params }: {
     params: Promise<{ blogSlug: string }>
@@ -41,7 +40,7 @@ export default async function BlogPage({ params }: {
         <main className="container w-8/9 mt-16">
             <article >
                 {/* Title */}
-                <h1 className="text-4xl font-bold md:text-5xl mb-2">{post.title}</h1>
+                <h1 className="text-2xl font-bold md:text-4xl mb-2">{post.title}</h1>
 
                 {/* Meta */}
                 <p className="mb-6 text-sm md:text-base muted-text">
@@ -83,7 +82,6 @@ export default async function BlogPage({ params }: {
                 )}
             </article>
         </main>
-        <Footer />
     </>
     )
 }

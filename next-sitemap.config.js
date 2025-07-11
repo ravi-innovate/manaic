@@ -54,7 +54,7 @@ const config = {
     loc: path,
     changefreq: 'daily',
     priority: 0.7,
-    lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+    lastmod: config.autoLastmod ? new Date().toISOString().split('.')[0] + 'Z' : undefined,
   }),
   additionalPaths: fetchSupabaseBlogPaths,
   sitemapSize: 50000,

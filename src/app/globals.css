@@ -110,3 +110,10 @@ body {
   margin: revert;
 }
 
+.blog-content ul{
+  padding: revert;
+}
+
+.blog-content a{
+  color: revert;
+}

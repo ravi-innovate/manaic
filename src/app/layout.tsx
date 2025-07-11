@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./HomeView/Navbar";
 import { gtmNoScript, gtmScript } from '@/lib/utils/Gtag'
+import Footer from "./HomeView/Footer";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,8 +27,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <head>   
-                <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSVC} />     
+            <head>
+                <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSVC} />
                 <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
             </head>
             <body
@@ -36,6 +37,7 @@ export default function RootLayout({
                 <noscript dangerouslySetInnerHTML={{ __html: gtmNoScript }} />
                 <Navbar />
                 {children}
+                <Footer />
             </body>
         </html>
     );
