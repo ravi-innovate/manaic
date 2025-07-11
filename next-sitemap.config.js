@@ -16,10 +16,10 @@ async function fetchSupabaseBlogPaths(config) {
 
   const totalPages = count ? Math.ceil(count / POSTS_PER_PAGE) : 1;
 
-  paths.push({ loc: '/blogs', changefreq: 'daily', priority: 0.9, lastmod: new Date().toISOString() });
+  paths.push({ loc: '/blogs', changefreq: 'daily', priority: 0.9, lastmod: new Date().toISOString().split('.')[0] + 'Z' });
 
   for (let i = 2; i <= totalPages; i++) {
-    paths.push({ loc: `/blogs?page=${i}`, changefreq: 'daily', priority: 0.8, lastmod: new Date().toISOString() });
+    paths.push({ loc: `/blogs?page=${i}`, changefreq: 'daily', priority: 0.8, lastmod: new Date().toISOString().split('.')[0] + 'Z' });
   }
 
   const { data: posts } = await supabase
@@ -31,7 +31,7 @@ async function fetchSupabaseBlogPaths(config) {
       loc: `/blog/${post.slug}`,
       changefreq: 'weekly',
       priority: 0.8,
-      lastmod: post.updated_at || new Date().toISOString(),
+      lastmod: post.updated_at?.split('.')[0] + 'Z' || new Date().toISOString().split('.')[0] + 'Z',
     });
   });
 
@@ -48,7 +48,7 @@ const config = {
   exclude: ['/admin/*', '/private-page', '/api/*', '/server-sitemap.xml'],
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
-    additionalSitemaps: [`${baseUrl}/server-sitemap.xml`],
+    // additionalSitemaps: [`${baseUrl}/server-sitemap.xml`],
   },
   transform: async (config, path) => ({
     loc: path,
