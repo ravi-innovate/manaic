@@ -12,7 +12,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
           alt={blog.title}
           className="w-full h-auto rounded-lg mb-4"
         /> : <ImageSubstitute text={blog.title} />}
-      <h2 className="text-xl font-semibold main-text">{blog.title}</h2>
+      <Link href={`/blog/${blog.slug}`}><h2 className="text-xl font-semibold main-text">{blog.title}</h2></Link>
       <p className="text-sm text-muted-text mt-1">
         {new Date(blog.created_at).toLocaleDateString("en-GB", {
           day: "numeric",

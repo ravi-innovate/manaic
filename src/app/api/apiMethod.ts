@@ -58,3 +58,16 @@ export async function getBlogsPaginated(page: number = 1, perPage: number = 6) {
     totalCount: count ?? 0,
   }
 }
+
+export async function fetchSlugs() {
+  const { data, error } = await supabase.from('posts').select('slug, updated_at');
+  if (!data || error) {
+    console.log('error while fetching slugs : ', error.message)
+    return [];
+  }
+  else
+    return data.map(p => ({
+      loc: `/blog/${p.slug}`,
+      lastmod: p.updated_at,
+    }));
+}

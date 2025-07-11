@@ -82,3 +82,27 @@ body {
   letter-spacing: 0.01em;
   text-align: left;
 }
+
+.blog-content h1 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+
+.blog-content h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.blog-content b {
+  font-weight: bold;
+}
+
+.blog-content ol {
+  list-style: decimal;
+}
+
+.blog-content>* {
+  margin: revert;
+}
+

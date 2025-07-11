@@ -1,8 +1,9 @@
-import { getAllPosts } from '@/app/api/apiMethod'
+import { getBlogsPaginated } from '@/app/api/apiMethod'
 import React from 'react';
-import BlogCard from '../blog/components/BlogCard';
+import BlogCard from '../blogs/components/BlogCard';
 const Categories = async () => {
-    const posts = await getAllPosts();
+    const res = await getBlogsPaginated();
+    const posts = res.blogs;
     return (
         <div className="container w-8/9 mt-16">
             <div

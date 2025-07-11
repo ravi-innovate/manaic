@@ -5,14 +5,14 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: {},
   },
-  async rewrites() {
-    return [
-      {
-        source: "/blogs",
-        destination: "/blog",
-      },
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/blogs",
+  //       destination: "/blog",
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;
