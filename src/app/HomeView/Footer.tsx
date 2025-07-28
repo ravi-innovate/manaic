@@ -8,11 +8,12 @@ const Footer = () => {
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between gap-8">
                     <div>
-                        <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`}>
+                        <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`} aria-label="Go to home">
                             <Image
                                 src={"/images/logo.png"}
                                 height={35}
                                 width={190}
+                                priority={false}
                                 alt="hero_home_image_missing-network-error"
                                 style={{ filter: "invert(0)", cursor: "pointer" }}
                             />
@@ -30,17 +31,17 @@ const Footer = () => {
                         </h3>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`}>
+                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`} aria-label="Go to home">
                                     Home
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}blogs`}>
+                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}tech`} aria-label="Go to tech blogs">
                                     Blogs
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}terms`}>
+                                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}terms`} aria-label="Go to terms page">
                                     Terms
                                 </Link>
                             </li>
@@ -58,8 +59,9 @@ const Footer = () => {
                                     href="mailto:devinpixel@gmail.com"
                                     className="hover:text-gray-400"
                                     style={{ cursor: "pointer" }}
+                                    aria-label="Email"
                                 >
-                                    devinpixel@gmail.com
+                                    devinpixelhead@gmail.com
                                 </Link>
                             </li>
                         </ul>
@@ -74,6 +76,7 @@ const Footer = () => {
                             <Link
                                 href={`${process.env.NEXT_PUBLIC_INSTA_URL}`}
                                 style={{ stroke: "white", fontSize: "25px" }}
+                                aria-label="Go to Instagram"
                             >
                                 <FiInstagram />
                             </Link>

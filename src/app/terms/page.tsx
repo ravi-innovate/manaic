@@ -88,7 +88,9 @@ const TermsPage = () => {
             For any questions, requests, or concerns about these Terms & Conditions, please contact us at:
           </p>
           <p className="mt-2 text-[#0000ff]">
-            <a href="mailto:devinpixelhead@gmail.com" className="hover:underline">
+            <a
+              aria-label={`Go to next email`}
+              href="mailto:devinpixelhead@gmail.com" className="hover:underline" >
               devinpixelhead@gmail.com
             </a>
           </p>

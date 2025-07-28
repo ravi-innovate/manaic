@@ -1,4 +1,4 @@
-// File: src/app/blog/page.tsx
+// File: src/app/tech/page.tsx
 import { getBlogsPaginated } from '@/app/api/apiMethod'
 import BlogCard from './components/BlogCard'
 import Pagination from './components/Pagination'

@@ -16,10 +16,10 @@ async function fetchSupabaseBlogPaths(config) {
 
   const totalPages = count ? Math.ceil(count / POSTS_PER_PAGE) : 1;
 
-  paths.push({ loc: '/blogs', changefreq: 'daily', priority: 0.9, lastmod: new Date().toISOString().split('.')[0] + 'Z' });
+  paths.push({ loc: '/tech', changefreq: 'daily', priority: 0.9, lastmod: new Date().toISOString().split('.')[0] + 'Z' });
 
   for (let i = 2; i <= totalPages; i++) {
-    paths.push({ loc: `/blogs?page=${i}`, changefreq: 'daily', priority: 0.8, lastmod: new Date().toISOString().split('.')[0] + 'Z' });
+    paths.push({ loc: `/tech?page=${i}`, changefreq: 'daily', priority: 0.8, lastmod: new Date().toISOString().split('.')[0] + 'Z' });
   }
 
   const { data: posts } = await supabase
@@ -28,7 +28,7 @@ async function fetchSupabaseBlogPaths(config) {
 
   posts?.forEach((post) => {
     paths.push({
-      loc: `/blog/${post.slug}`,
+      loc: `/tech/${post.slug}`,
       changefreq: 'weekly',
       priority: 0.8,
       lastmod: post.updated_at?.split('.')[0] + 'Z' || new Date().toISOString().split('.')[0] + 'Z',

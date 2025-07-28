@@ -5,6 +5,7 @@ import {
     generateBlogJsonLD,
     generatePageMetadataFromSlug
 } from '@/lib/utils/seo'
+import Image from 'next/image';
 
 export async function generateMetadata({ params }: {
     params: Promise<{ blogSlug: string }>
@@ -21,7 +22,7 @@ export default async function BlogPage({ params }: {
 
     if (!post) return notFound()
     const siteUrl = process.env.NEXT_PUBLIC_APP_URL!;
-    const breadcrumbJson = generateBreadcrumbList(['', 'blogs', blogSlug], siteUrl);
+    const breadcrumbJson = generateBreadcrumbList(['', 'tech', blogSlug], siteUrl);
     const blogJson = generateBlogJsonLD({
         siteUrl,
         slug: post.slug,
@@ -53,10 +54,11 @@ export default async function BlogPage({ params }: {
 
                 {/* Cover Image */}
                 {post.cover_image && (
-                    <img
+                    <Image
+                        height={750}
+                        width={1300}
                         src={`${process.env.NEXT_PUBLIC_SUPABASE_IMAGE_URL}${post.cover_image}`}
                         alt={post.title}
-
                         className="w-full h-auto rounded-xl mb-8 shadow-md object-contain"
                     />
                 )}

@@ -22,7 +22,7 @@ const Hero = () => {
                         inspiration that can help you learn, grow, and stay
                         informed!
                     </p>
-                    <Link href={`${process.env.NEXT_PUBLIC_APP_URL}blogs`}>
+                    <Link href={`${process.env.NEXT_PUBLIC_APP_URL}tech`} aria-label="Go to tech blogs">
                         <button className="mt-4 px-4 py-2 text-sm text-white font-medium bg-main-text rounded-full"
                             style={{ backgroundColor: "var(--main-text)" }}>Explore Blogs</button>
                     </Link>

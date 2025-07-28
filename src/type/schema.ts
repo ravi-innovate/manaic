@@ -9,3 +9,8 @@ export type Blog = {
   excerpt?: string
   cover_image?: string
 }
+
+export type LikeButtonProps = {
+  postId: number
+  initialLikes: number
+}

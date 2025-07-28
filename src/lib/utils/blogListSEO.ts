@@ -14,8 +14,8 @@ export function generateBlogListingBreadcrumb(siteUrl: string) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Blogs",
-        item: `${siteUrl}blogs`,
+        name: "tech",
+        item: `${siteUrl}tech`,
       }
     ]
   }
@@ -33,7 +33,7 @@ export function generateBlogItemListLD(
       position: index + 1,
       name: post.title,
       description: post.excerpt || post.title,
-      url: `${siteUrl}blog/${post.slug}`,
+      url: `${siteUrl}tech/${post.slug}`,
     })),
   }
 }
@@ -49,7 +49,7 @@ export function generateBlogListPageMetadata(): Metadata {
     openGraph: {
       title,
       description,
-      url: `${siteUrl}blogs`,
+      url: `${siteUrl}tech`,
     },
     twitter: {
       card: 'summary',

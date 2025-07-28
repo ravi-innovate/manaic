@@ -44,7 +44,7 @@ export function generateBlogJsonLD({
     "@type": "BlogPosting",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteUrl}blog/${slug}`,
+      "@id": `${siteUrl}tech/${slug}`,
     },
     headline: title,
     description: excerpt || title,
@@ -80,7 +80,7 @@ export async function generatePageMetadataFromSlug(slug: string): Promise<Metada
     openGraph: {
       title: post.title,
       description: post.excerpt || post.title,
-      url: `${siteUrl}blog/${post.slug}`,
+      url: `${siteUrl}tech/${post.slug}`,
       images: coverImage ? [coverImage] : [],
     },
     twitter: {

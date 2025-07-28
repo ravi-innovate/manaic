@@ -1,6 +1,6 @@
 import { getBlogsPaginated } from '@/app/api/apiMethod'
 import React from 'react';
-import BlogCard from '../blogs/components/BlogCard';
+import BlogCard from '../tech/components/BlogCard';
 const Categories = async () => {
     const res = await getBlogsPaginated();
     const posts = res.blogs;

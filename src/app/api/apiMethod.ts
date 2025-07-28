@@ -67,7 +67,31 @@ export async function fetchSlugs() {
   }
   else
     return data.map(p => ({
-      loc: `/blog/${p.slug}`,
+      loc: `/tech/${p.slug}`,
       lastmod: p.updated_at,
     }));
+}
+
+export async function updatePostLike(postId: number) {
+  try {
+    const { data, error } = await supabase
+      .from('posts')
+      .select('likes')
+      .eq('id', postId)
+      .single()
+
+    if (error) throw error
+
+    const currentLikes = data.likes || 0
+
+    const { error: updateError } = await supabase
+      .from('posts')
+      .update({ likes: currentLikes + 1 })
+      .eq('id', postId)
+      if (updateError) throw updateError
+    return {success:true}
+  } catch (error) {
+    console.error('Error updating likes:', error)
+    return { success: false }
+  }
 }

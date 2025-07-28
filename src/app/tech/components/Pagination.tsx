@@ -35,6 +35,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
                     className={`inline-flex px-3 py-1 rounded-full  ${currentPage === 1 ? 'opacity-40 pointer-events-none' : 'hover:underline'
                         }`}
                     style={{ backgroundColor: "#9900a020" }}
+                     aria-label={`Go to previous page`}
                 >
                     <GrPrevious className='mt-1' style={{padding:"2px"}}/> Previous
                 </Link>
@@ -49,6 +50,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
                         <Link
                             key={page}
                             href={`${basePath}?page=${page}`}
+                             aria-label={`Go to ${page}`}
                             className={`px-3 py-1 rounded-full text-large transition ${page === currentPage
                                 ? 'pointer-events-none'
                                 : 'text-main-text hover:bg-main-text hover:text-white'
@@ -67,6 +69,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
                     className={`inline-flex px-3 py-1 rounded-full ${currentPage === totalPages ? 'opacity-40 pointer-events-none' : 'hover:underline'
                         }`}
                     style={{ backgroundColor: "#9900a020" }}
+                     aria-label={`Go to next page`}
                 >
                     Next <GrNext className='mt-1' style={{padding:"2px"}} />
                 </Link>

@@ -28,11 +28,12 @@ const Navbar: React.FC = () => {
     return (
         <nav className="container w-8/9 py-3 flex items-center justify-between relative">
             {/* Logo */}
-            <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`}>
+            <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`} aria-label="Go to home">
                 <Image
                     src={"/images/logo.png"}
                     height={55}
                     width={140}
+                    priority={true}
                     alt="logo"
                     style={{ filter: `invert(${darkMode ? 0 : 1})`, cursor: "pointer" }}
                 />
@@ -43,12 +44,14 @@ const Navbar: React.FC = () => {
                 <Link
                     href={`${process.env.NEXT_PUBLIC_APP_URL}`}
                     className="flex items-center gap-1 p-1 px-3 rounded-full"
+                    aria-label="Go to home"
                 >
                     Home <IoHomeOutline />
                 </Link>
                 <Link
-                    href={`${process.env.NEXT_PUBLIC_APP_URL}blogs`}
+                    href={`${process.env.NEXT_PUBLIC_APP_URL}tech`}
                     className="flex items-center gap-1 p-1 px-3 rounded-full"
+                    aria-label="Go to tech blogs"
                 >
                     Blogs <RiArticleLine />
                 </Link>
@@ -75,13 +78,15 @@ const Navbar: React.FC = () => {
                         href={`${process.env.NEXT_PUBLIC_APP_URL}`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="flex items-center gap-2"
+                        aria-label="Go to home"
                     >
                         <IoHomeOutline /> Home
                     </Link>
                     <Link
-                        href={`${process.env.NEXT_PUBLIC_APP_URL}blogs`}
+                        href={`${process.env.NEXT_PUBLIC_APP_URL}tech`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="flex items-center gap-2"
+                        aria-label="Go to tech blogs"
                     >
                         <RiArticleLine /> Blogs
                     </Link>
