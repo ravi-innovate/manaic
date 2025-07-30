@@ -3,43 +3,52 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --main-text: #6600cc;         /* Darker purple for better contrast */
-  --primary-text: #000000;
-  --secondary-text: #3a3a3a;    /* Slightly darker for readability */
-  --muted-text: #7e7e7e;        /* Higher contrast than #9e9e9e */
-  --link-text: #1565c0;         /* Better contrast */
-  --error-text: #c62828;
-  --success-text: #2e7d32;
+  /* Light Theme - Default */
+  --background: #FFFFFF; /* Pure white for maximum contrast */
+  --foreground: #212121; /* Darker grey for primary text, better contrast than #171717 against white */
+  --main-text: #673AB7; /* A vibrant, yet darker purple. Strong contrast with white. */
+  --primary-text: #000000; /* Pure black for headings and critical text */
+  --secondary-text: #424242; /* Dark grey, good contrast for secondary info */
+  --muted-text: #757575; /* A mid-grey, still providing good contrast but softer than primary/secondary */
+  --link-text: #1976D2; /* A standard, strong blue for links that stands out */
+  --error-text: #D32F2F; /* Clear error red */
+  --success-text: #388E3C; /* Clear success green */
+  --border-color: #E0E0E0; /* Light border for subtle separation */
+  --hover-background: #F5F5F5; /* Very light grey for hover states */
 }
 
 [data-theme="dark"] {
-  --background: #0a000d;
-  --background-1: #1a1120;       /* Slightly brighter */
-  --background-2: #140a1a;
-  --foreground: #f2f2f2;         /* Slightly lighter text */
-  --main-text: #9225ff;          /* Brighter purple for dark BG */
-  --primary-text: #ffffff;
-  --secondary-text: #c2c2c2;
-  --muted-text: #a0a0a0;
-  --link-text: #64b5f6;
-  --error-text: #e57373;
-  --success-text: #81c784;
+  /* Dark Theme */
+  --background: #0D0014; /* Very dark purple, nearly black, as per your image. */
+  --background-1: #1C0F28; /* Slightly lighter dark purple for subtle differentiation */
+  --background-2: #140A1D; /* Another dark background shade, perhaps for cards/sections */
+  --foreground: #E0E0E0; /* Light grey for general text, provides good contrast with dark background */
+  --main-text: #A765FF; /* A brighter, more prominent purple. High contrast against dark background. */
+  --primary-text: #FFFFFF; /* Pure white for headings and main elements */
+  --secondary-text: #BDBDBD; /* Lighter grey for secondary text, ensures readability */
+  --muted-text: #8C8C8C; /* Mid-grey for muted text, good contrast */
+  --link-text: #79BAFF; /* A bright, accessible blue for links */
+  --error-text: #EF9A9A; /* Lighter red for error messages */
+  --success-text: #A5D6A7; /* Lighter green for success messages */
+  --border-color: #3C2E4C; /* A darker, purplish border for dark mode */
+  --hover-background: #2A1D3A; /* Darker hover state */
 }
 
+/* Optional: Additional light theme specificity for clarity, though :root handles it */
 [data-theme="light"] {
-  --background: #ffffff;
-  --background-1: #f9f9f9;
-  --background-2: #eeeeee;
-  --foreground: #171717;
-  --main-text: #6600cc;
+  --background: #FFFFFF;
+  --background-1: #e8e8e8; /* Slight off-white for elements */
+  --background-2: #f8f8f8; /* Another light background shade */
+  --foreground: #212121;
+  --main-text: #673AB7;
   --primary-text: #000000;
-  --secondary-text: #3a3a3a;
-  --muted-text: #7e7e7e;
-  --link-text: #1565c0;
-  --error-text: #c62828;
-  --success-text: #2e7d32;
+  --secondary-text: #2e2e2e;
+  --muted-text: #3e3e3e;
+  --link-text: #1976D2;
+  --error-text: #D32F2F;
+  --success-text: #388E3C;
+  --border-color: #E0E0E0;
+  --hover-background: #F5F5F5;
 }
 
 
@@ -85,14 +94,21 @@ body {
 }
 
 .blog-content h1 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   line-height: 2.25rem;
 }
 
 
 .blog-content h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 2rem;
+  font-weight: bold;
+}
+
+.blog-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.50rem;
+  font-weight: bold;
 }
 
 .blog-content b {
@@ -117,4 +133,12 @@ body {
 
 .blog-content a{
   color: revert;
+}
+
+.blog-content .code{
+  background-color: var(--background-1);
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-family: consolas;
+  font-style: normal;
 }

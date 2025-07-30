@@ -7,7 +7,7 @@ export function generateBreadcrumbList(pathSegments: string[], siteUrl: string) 
     position: index + 1,
     name: segment === ''
       ? 'Home'
-      : decodeURIComponent(segment).replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+      : decodeURIComponent(segment).replace(/-/g, ' '),
     item: `${siteUrl.replace(/\/$/, '')}/${pathSegments.slice(0, index + 1).join('/').replace(/^\/+/, '')}`
   }))
 
@@ -91,3 +91,18 @@ export async function generatePageMetadataFromSlug(slug: string): Promise<Metada
     }
   }
 }
+
+export const generateFAQPageJsonLD = (faqs: Array<{ question: string; answer: string }>) => {
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+};

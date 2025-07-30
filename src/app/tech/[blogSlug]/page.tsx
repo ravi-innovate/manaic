@@ -3,9 +3,11 @@ import { notFound } from 'next/navigation'
 import {
     generateBreadcrumbList,
     generateBlogJsonLD,
-    generatePageMetadataFromSlug
+    generatePageMetadataFromSlug,
+    generateFAQPageJsonLD
 } from '@/lib/utils/seo'
 import Image from 'next/image';
+import { FAQItem } from '@/type/schema';
 
 export async function generateMetadata({ params }: {
     params: Promise<{ blogSlug: string }>
@@ -34,9 +36,13 @@ export default async function BlogPage({ params }: {
         datePublished: post.created_at
     })
 
+    const faqs = JSON.parse(post.faq);
+    const faqJson = generateFAQPageJsonLD(faqs);
+
     return (<>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJson, null, 4) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJson, null, 4) }} />
+        {faqs && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson, null, 4) }} />}
 
         <main className="container w-8/9 mt-16">
             <article >
@@ -51,6 +57,20 @@ export default async function BlogPage({ params }: {
                         year: "numeric",
                     })}
                 </p>
+
+                {/* Tags */}
+                {post.tags?.length > 0 && (
+                    <div className="mb-6 flex flex-wrap gap-3">
+                        {post.tags.map((tag: string) => (
+                            <span
+                                key={tag}
+                                className="px-3 py-1 rounded-full text-sm md:text-base bg-[var(--background-1)]"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                )}
 
                 {/* Cover Image */}
                 {post.cover_image && (
@@ -69,19 +89,22 @@ export default async function BlogPage({ params }: {
                     dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
-                {/* Tags */}
-                {post.tags?.length > 0 && (
-                    <div className="mt-10 flex flex-wrap gap-2">
-                        {post.tags.map((tag: string) => (
-                            <span
-                                key={tag}
-                                className="pr-3 py-1 text-sm md:text-base muted-text"
-                            >
-                                #{tag}
-                            </span>
+                <section className="blog-content text-base md:text-lg p-3 md:p-5 mt-12 mb-16 rounded-lg bg-[var(--background-2)]">
+                    <h2>Frequently Asked Questions</h2>
+                    <div className="faq-list">
+                        {faqs && faqs.map((faq: FAQItem, index: number) => (
+                            <details key={index} className="faq-item mt-3 py-3 px-5 rounded-lg bg-[var(--background-1)]">
+                                <summary className="faq-question font-bold">
+                                    {faq.question}
+                                </summary>
+                                <div className="faq-answer">
+                                    <p><b>Ans : </b>{faq.answer}</p>
+                                </div>
+                            </details>
                         ))}
                     </div>
-                )}
+                </section>
+
             </article>
         </main>
     </>

@@ -14,3 +14,8 @@ export type LikeButtonProps = {
   postId: number
   initialLikes: number
 }
+
+export type FAQItem = {
+    question: string;
+    answer: string;
+}
