@@ -29,10 +29,12 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSVC} />
+                <meta name="google" content="notranslate"/>
                 <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                translate="no"
             >
                 <noscript dangerouslySetInnerHTML={{ __html: gtmNoScript }} />
                 <Navbar />
