@@ -53,7 +53,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
                              aria-label={`Go to ${page}`}
                             className={`px-3 py-1 rounded-full text-large transition ${page === currentPage
                                 ? 'pointer-events-none'
-                                : 'text-main-text hover:bg-main-text hover:text-white'
+                                : 'text-main-text hover:bg-main-text'
                                 }`}
 
                             style={{ backgroundColor: `${page === currentPage ? 'var(--main-text)' : ''}` }}

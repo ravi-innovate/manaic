@@ -25,7 +25,7 @@
   --foreground: #E0E0E0; /* Light grey for general text, provides good contrast with dark background */
   --main-text: #A765FF; /* A brighter, more prominent purple. High contrast against dark background. */
   --primary-text: #FFFFFF; /* Pure white for headings and main elements */
-  --secondary-text: #BDBDBD; /* Lighter grey for secondary text, ensures readability */
+  --secondary-text: #d4d4d4; /* Lighter grey for secondary text, ensures readability */
   --muted-text: #8C8C8C; /* Mid-grey for muted text, good contrast */
   --link-text: #79BAFF; /* A bright, accessible blue for links */
   --error-text: #EF9A9A; /* Lighter red for error messages */
@@ -42,7 +42,7 @@
   --foreground: #212121;
   --main-text: #673AB7;
   --primary-text: #000000;
-  --secondary-text: #2e2e2e;
+  --secondary-text: #181818;
   --muted-text: #3e3e3e;
   --link-text: #1976D2;
   --error-text: #D32F2F;
@@ -115,7 +115,6 @@ body {
   line-height: 2.25rem;
 }
 
-
 .blog-content h2 {
   font-size: 1.75rem;
   line-height: 2rem;
@@ -124,9 +123,36 @@ body {
 
 .blog-content h3 {
   font-size: 1.25rem;
-  line-height: 1.50rem;
+  line-height: 1.5rem;
   font-weight: bold;
 }
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+  .blog-content h2 {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+
+  .blog-content h3 {
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 480px) {
+  .blog-content h2 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+
+  .blog-content h3 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+}
+
 
 .blog-content b {
   font-weight: bold;
@@ -158,19 +184,32 @@ body {
   padding: 2px 6px;
   font-family: consolas;
   font-style: normal;
+  display: inline;
 }
 
-/* * {
-  translate: no !important;
+/* Wrap only the blog-content tables */
+.blog-content .cover {
+  
+  max-width: 100%;
+  overflow-x: scroll;
+  display: block;
+  /* -webkit-overflow-scrolling: touch; */
+ 
 }
 
-article * {
-  translate: yes !important;
+/* Keep cells from squishing too much */
+.blog-content th,
+.blog-content td {
+  white-space: nowrap;
+  padding: 0.5rem;
+  border:1px solid var(--secondary-text);
 }
 
-.notranslate, .code, code, pre {
-  translate: no !important;
-} */
+/* Optional: Make header sticky on horizontal scroll */
+.blog-content thead th {
+  background: var(--background-1 ); /* match your theme */
+}
+
 
 .notranslate{
   white-space: pre;
